@@ -1,0 +1,297 @@
+﻿regla,variable,record_id,valor_original,valor_nuevo,tipo,justificacion,requiere_query
+A1,ast/alt,,alt<-tgoing; ast<-tgping,ast<-tgoing; alt<-tgping,corrección de etiqueta,TGO = AST y TGP = ALT; el renombrado heredado estaba invertido.,False
+A2,ecog,,códigos 1-5,ECOG 0-4 (código - 1),recodificación,Cruce con Karnofsky: KPS 100 -> código 1 en 315/337 ingresos únicos; KPS 90 -> código 2 en 84/121. Equivale a ECOG 0-4 + 1.,False
+A3,"shock, sepsis, delirium, support renal",,"1 = no, 2 = sí","0 = no, 1 = sí",recodificación,"Unificar con el resto de binarias (vasopresores, soporte ventilatorio) y con los desenlaces.",False
+A4,staging_risk,,1 / 2,"0 = sólido temprano, leucemia de riesgo bajo, linfoma o mieloma temprano; 1 = sólido avanzado, leucemia de riesgo alto, linfoma o mieloma avanzado",recodificación,Codificación confirmada por el equipo clínico.,False
+A5,"sedatives_use, painkillers_use, methylene_blue_use, support renal, delirium, oncological_treatment",,predictores,excluidas como predictores (lista VARIABLES_FUGA),exclusión por fuga de información,"Se registran durante la estancia, no en las primeras 24 h (DA4). Vasopresores, choque y sepsis sí se registran al ingreso.",False
+B1,bmi,2.0,0.0029380341880341,29.38,corrección determinística,IMC calculado con talla en cm (kg/cm²); x10.000 lo lleva a kg/m².,False
+B1,bmi,9.0,0.0023999459167117,24.0,corrección determinística,IMC calculado con talla en cm (kg/cm²); x10.000 lo lleva a kg/m².,False
+B1,bmi,10.0,0.00234375,23.44,corrección determinística,IMC calculado con talla en cm (kg/cm²); x10.000 lo lleva a kg/m².,False
+B1,bmi,18.0,0.0037109375,37.11,corrección determinística,IMC calculado con talla en cm (kg/cm²); x10.000 lo lleva a kg/m².,False
+B1,bmi,23.0,0.0029873438527284,29.87,corrección determinística,IMC calculado con talla en cm (kg/cm²); x10.000 lo lleva a kg/m².,False
+B1,bmi,32.0,0.0025990903183885,25.99,corrección determinística,IMC calculado con talla en cm (kg/cm²); x10.000 lo lleva a kg/m².,False
+B1,bmi,205.0,0.0020832419630717,20.83,corrección determinística,IMC calculado con talla en cm (kg/cm²); x10.000 lo lleva a kg/m².,False
+B2,leukocytes,53.0,38.8,38800.0,corrección determinística,Leucocitos en x10³/µL mientras neutrófilos y linfocitos están en /µL (diferencial > total).,False
+B2,leukocytes,216.0,4.34,4340.0,corrección determinística,Leucocitos en x10³/µL mientras neutrófilos y linfocitos están en /µL (diferencial > total).,False
+B2,leukocytes,589.0,20.4,20400.0,corrección determinística,Leucocitos en x10³/µL mientras neutrófilos y linfocitos están en /µL (diferencial > total).,False
+B2,leukocytes,684.0,19.24,19240.0,corrección determinística,Leucocitos en x10³/µL mientras neutrófilos y linfocitos están en /µL (diferencial > total).,False
+B2,neuthrophils,684.0,17.4,17400.0,corrección determinística,Mismo registro: neutrófilos también en x10³/µL.,False
+B3,platelet,180.0,190.0,190000.0,corrección determinística,"Plaquetas en x10³/µL (190, 220, 10); el resto de la base está en /µL.",False
+B3,platelet,747.0,220.0,220000.0,corrección determinística,"Plaquetas en x10³/µL (190, 220, 10); el resto de la base está en /µL.",False
+B3,platelet,877.0,10.0,10000.0,corrección determinística,"Plaquetas en x10³/µL (190, 220, 10); el resto de la base está en /µL.",False
+B4,potassium,752.0,40.5,4.05,corrección determinística,Punto decimal corrido: 40.5 solo tiene la lectura 4.05 mmol/L.,False
+C1,lactate,534.0,53.0,,a faltante + query,"Lactato fuera de 0,1-30 mmol/L (231, 53, 0). 231 puede ser 2,31 o 23,1: no hay una sola lectura.",True
+C1,lactate,766.0,0.0,,a faltante + query,"Lactato fuera de 0,1-30 mmol/L (231, 53, 0). 231 puede ser 2,31 o 23,1: no hay una sola lectura.",True
+C1,lactate,959.0,231.0,,a faltante + query,"Lactato fuera de 0,1-30 mmol/L (231, 53, 0). 231 puede ser 2,31 o 23,1: no hay una sola lectura.",True
+C2,bicarbonate,89.0,3.6,,a faltante + query,HCO3 negativo o igual al valor absoluto del exceso de base: el campo se llenó con el BE.,True
+C2,bicarbonate,475.0,-3.7,,a faltante + query,HCO3 negativo o igual al valor absoluto del exceso de base: el campo se llenó con el BE.,True
+C2,bicarbonate,655.0,-1.7,,a faltante + query,HCO3 negativo o igual al valor absoluto del exceso de base: el campo se llenó con el BE.,True
+C3,hemoglobin,21.0,4370.0,,a faltante + query,"Hemoglobina > 25 g/dL (4370; 42,5 parece hematocrito).",True
+C3,hemoglobin,546.0,42.5,,a faltante + query,"Hemoglobina > 25 g/dL (4370; 42,5 parece hematocrito).",True
+C10,platelet,818.0,0.0,,a faltante + query,Plaquetas = 0 /µL es incompatible con la vida; dato no registrado.,True
+C5,pt,879.0,1.07,,a faltante + query,"TP de 1,07 s: parece INR digitado en el campo de TP.",True
+C6,creatinine,681.0,68.0,,a faltante + query,"Creatinina 68 mg/dL es incompatible con BUN 18,6; probablemente µmol/L (0,77 mg/dL). Se verifica antes de convertir.",True
+C7,sodium,147.0,4.5,,a faltante + query,"Sodio 4,5 mmol/L: idéntico al potasio del mismo registro, campo copiado.",True
+C8,calcium,456.0,4.79,,a faltante + query,"Calcio total < 5 mg/dL (3,58-4,9): compatible con calcio iónico en mg/dL registrado en el campo de calcio total.",True
+C8,calcium,523.0,4.89,,a faltante + query,"Calcio total < 5 mg/dL (3,58-4,9): compatible con calcio iónico en mg/dL registrado en el campo de calcio total.",True
+C8,calcium,738.0,4.19,,a faltante + query,"Calcio total < 5 mg/dL (3,58-4,9): compatible con calcio iónico en mg/dL registrado en el campo de calcio total.",True
+C8,calcium,881.0,3.58,,a faltante + query,"Calcio total < 5 mg/dL (3,58-4,9): compatible con calcio iónico en mg/dL registrado en el campo de calcio total.",True
+C8,calcium,963.0,4.9,,a faltante + query,"Calcio total < 5 mg/dL (3,58-4,9): compatible con calcio iónico en mg/dL registrado en el campo de calcio total.",True
+C9,sapsiii,848.0,0.85,,a faltante + query,"SAPS III de 0,85: el puntaje es entero (0-217); parece una probabilidad registrada en el campo del puntaje.",True
+D1,bmi,127.0,12.30666270077335,12.30666270077335,conservado (extremo plausible),IMC < 13 (caquexia) o > 40: posible.,False
+D1,bmi,130.0,12.30666270077335,12.30666270077335,conservado (extremo plausible),IMC < 13 (caquexia) o > 40: posible.,False
+D1,bmi,131.0,12.30666270077335,12.30666270077335,conservado (extremo plausible),IMC < 13 (caquexia) o > 40: posible.,False
+D1,bmi,430.0,40.88888888888889,40.88888888888889,conservado (extremo plausible),IMC < 13 (caquexia) o > 40: posible.,False
+D1,bmi,435.0,44.44444444444444,44.44444444444444,conservado (extremo plausible),IMC < 13 (caquexia) o > 40: posible.,False
+D1,bmi,535.0,42.00798151648814,42.00798151648814,conservado (extremo plausible),IMC < 13 (caquexia) o > 40: posible.,False
+D1,bmi,536.0,42.00798151648814,42.00798151648814,conservado (extremo plausible),IMC < 13 (caquexia) o > 40: posible.,False
+D1,bmi,537.0,42.00798151648814,42.00798151648814,conservado (extremo plausible),IMC < 13 (caquexia) o > 40: posible.,False
+D1,bmi,571.0,43.3425160697888,43.3425160697888,conservado (extremo plausible),IMC < 13 (caquexia) o > 40: posible.,False
+D1,bmi,572.0,43.3425160697888,43.3425160697888,conservado (extremo plausible),IMC < 13 (caquexia) o > 40: posible.,False
+D1,bmi,591.0,41.23489547850407,41.23489547850407,conservado (extremo plausible),IMC < 13 (caquexia) o > 40: posible.,False
+D1,bmi,592.0,40.39115646258504,40.39115646258504,conservado (extremo plausible),IMC < 13 (caquexia) o > 40: posible.,False
+D1,bmi,673.0,43.06122448979593,43.06122448979593,conservado (extremo plausible),IMC < 13 (caquexia) o > 40: posible.,False
+D1,bmi,912.0,40.62222222222223,40.62222222222223,conservado (extremo plausible),IMC < 13 (caquexia) o > 40: posible.,False
+D2,lactate,502.0,16.4,16.4,conservado (extremo plausible),Lactato 16-23 mmol/L: posible en choque.,False
+D2,lactate,598.0,23.0,23.0,conservado (extremo plausible),Lactato 16-23 mmol/L: posible en choque.,False
+D2,lactate,878.0,16.59,16.59,conservado (extremo plausible),Lactato 16-23 mmol/L: posible en choque.,False
+D3,bicarbonate,548.0,4.4,4.4,conservado (extremo plausible),"HCO3 3-4 con BE -22 a -24: acidosis metabólica grave, coherente.",False
+D3,bicarbonate,878.0,3.2,3.2,conservado (extremo plausible),"HCO3 3-4 con BE -22 a -24: acidosis metabólica grave, coherente.",False
+D4,leukocytes,14.0,30.0,30.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,25.0,10.0,10.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,30.0,90.0,90.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,46.0,60.0,60.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,47.0,110.0,110.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,73.0,170.0,170.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,79.0,240.0,240.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,223.0,100.0,100.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,245.0,360.0,360.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,249.0,480.0,480.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,265.0,30.0,30.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,267.0,80.0,80.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,273.0,410.0,410.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,283.0,370.0,370.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,297.0,230.0,230.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,307.0,10.0,10.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,376.0,150.0,150.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,381.0,410.0,410.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,382.0,160.0,160.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,472.0,60.0,60.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,473.0,30.0,30.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,474.0,30.0,30.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,475.0,90.0,90.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,498.0,390.0,390.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,510.0,200.0,200.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,511.0,420.0,420.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,512.0,30.0,30.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,518.0,430.0,430.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,522.0,200.0,200.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,524.0,70.0,70.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,531.0,50.0,50.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,532.0,20.0,20.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,533.0,70.0,70.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,540.0,100.0,100.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,541.0,80.0,80.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,544.0,110.0,110.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,552.0,250.0,250.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,553.0,50.0,50.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,555.0,270.0,270.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,611.0,30.0,30.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,618.0,80.0,80.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,619.0,30.0,30.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,625.0,180.0,180.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,633.0,20.0,20.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,640.0,30.0,30.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,641.0,40.0,40.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,642.0,100.0,100.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,643.0,40.0,40.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,680.0,200.0,200.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,682.0,70.0,70.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,718.0,120.0,120.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,719.0,160.0,160.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,735.0,460.0,460.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,779.0,150.0,150.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,818.0,140.0,140.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,877.0,170.0,170.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,906.0,320.0,320.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,908.0,150.0,150.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,911.0,190.0,190.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,912.0,160.0,160.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,913.0,100.0,100.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,930.0,80.0,80.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,939.0,350.0,350.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,945.0,50.0,50.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,947.0,410.0,410.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D4,leukocytes,989.0,230.0,230.0,conservado (extremo plausible),Leucopenia profunda; 94 % son tumores hematológicos (aplasia).,False
+D5,leukocytes,367.0,103340.0,103340.0,conservado (extremo plausible),Hiperleucocitosis: posible en leucemias.,False
+D5,leukocytes,395.0,146300.0,146300.0,conservado (extremo plausible),Hiperleucocitosis: posible en leucemias.,False
+D5,leukocytes,647.0,107210.0,107210.0,conservado (extremo plausible),Hiperleucocitosis: posible en leucemias.,False
+D5,leukocytes,661.0,375300.0,375300.0,conservado (extremo plausible),Hiperleucocitosis: posible en leucemias.,False
+D5,leukocytes,905.0,318970.0,318970.0,conservado (extremo plausible),Hiperleucocitosis: posible en leucemias.,False
+D5,leukocytes,934.0,120560.0,120560.0,conservado (extremo plausible),Hiperleucocitosis: posible en leucemias.,False
+D6,platelet,119.0,1476000.0,1476000.0,conservado (extremo plausible),Trombocitosis > 1 millón: posible.,False
+D7,calcium,276.0,15.5,15.5,conservado (extremo plausible),Hipercalcemia > 15 mg/dL: posible en cáncer.,False
+D7,calcium,442.0,17.4,17.4,conservado (extremo plausible),Hipercalcemia > 15 mg/dL: posible en cáncer.,False
+D7,calcium,453.0,18.2,18.2,conservado (extremo plausible),Hipercalcemia > 15 mg/dL: posible en cáncer.,False
+D7,calcium,526.0,17.0,17.0,conservado (extremo plausible),Hipercalcemia > 15 mg/dL: posible en cáncer.,False
+D7,calcium,751.0,19.6,19.6,conservado (extremo plausible),Hipercalcemia > 15 mg/dL: posible en cáncer.,False
+D8,potassium,739.0,1.96,1.96,conservado (extremo plausible),Hipopotasemia < 2: posible.,False
+D8,potassium,763.0,1.99,1.99,conservado (extremo plausible),Hipopotasemia < 2: posible.,False
+D10,sapsiii,203.0,3.0,3.0,conservado (extremo plausible),"SAPS III < 16: posible (rango teórico 0-217; Moreno 2005), pero bajo y no coherente con la mortalidad esperada registrada. Se conserva y se verifica.",True
+D10,sapsiii,205.0,3.0,3.0,conservado (extremo plausible),"SAPS III < 16: posible (rango teórico 0-217; Moreno 2005), pero bajo y no coherente con la mortalidad esperada registrada. Se conserva y se verifica.",True
+D10,sapsiii,366.0,7.0,7.0,conservado (extremo plausible),"SAPS III < 16: posible (rango teórico 0-217; Moreno 2005), pero bajo y no coherente con la mortalidad esperada registrada. Se conserva y se verifica.",True
+D10,sapsiii,388.0,5.0,5.0,conservado (extremo plausible),"SAPS III < 16: posible (rango teórico 0-217; Moreno 2005), pero bajo y no coherente con la mortalidad esperada registrada. Se conserva y se verifica.",True
+D10,sapsiii,410.0,6.0,6.0,conservado (extremo plausible),"SAPS III < 16: posible (rango teórico 0-217; Moreno 2005), pero bajo y no coherente con la mortalidad esperada registrada. Se conserva y se verifica.",True
+D10,sapsiii,470.0,7.0,7.0,conservado (extremo plausible),"SAPS III < 16: posible (rango teórico 0-217; Moreno 2005), pero bajo y no coherente con la mortalidad esperada registrada. Se conserva y se verifica.",True
+D10,sapsiii,622.0,3.0,3.0,conservado (extremo plausible),"SAPS III < 16: posible (rango teórico 0-217; Moreno 2005), pero bajo y no coherente con la mortalidad esperada registrada. Se conserva y se verifica.",True
+D10,sapsiii,708.0,14.0,14.0,conservado (extremo plausible),"SAPS III < 16: posible (rango teórico 0-217; Moreno 2005), pero bajo y no coherente con la mortalidad esperada registrada. Se conserva y se verifica.",True
+D10,sapsiii,774.0,7.0,7.0,conservado (extremo plausible),"SAPS III < 16: posible (rango teórico 0-217; Moreno 2005), pero bajo y no coherente con la mortalidad esperada registrada. Se conserva y se verifica.",True
+D10,sapsiii,841.0,10.0,10.0,conservado (extremo plausible),"SAPS III < 16: posible (rango teórico 0-217; Moreno 2005), pero bajo y no coherente con la mortalidad esperada registrada. Se conserva y se verifica.",True
+D11,sapsiii,128.0,17.3,17.3,conservado (extremo plausible),"SAPS III con decimales (17,3; 18,8; 24,13): el puntaje es entero. Valor posible en magnitud; se conserva y se verifica.",True
+D11,sapsiii,507.0,18.8,18.8,conservado (extremo plausible),"SAPS III con decimales (17,3; 18,8; 24,13): el puntaje es entero. Valor posible en magnitud; se conserva y se verifica.",True
+D11,sapsiii,508.0,18.8,18.8,conservado (extremo plausible),"SAPS III con decimales (17,3; 18,8; 24,13): el puntaje es entero. Valor posible en magnitud; se conserva y se verifica.",True
+D11,sapsiii,616.0,24.13,24.13,conservado (extremo plausible),"SAPS III con decimales (17,3; 18,8; 24,13): el puntaje es entero. Valor posible en magnitud; se conserva y se verifica.",True
+D9,apacheii,21.0,0.0,0.0,conservado (extremo plausible),APACHE II = 0: valor posible; confirmado por el equipo clínico. Se conserva.,False
+D9,apacheii,124.0,0.0,0.0,conservado (extremo plausible),APACHE II = 0: valor posible; confirmado por el equipo clínico. Se conserva.,False
+D9,apacheii,370.0,0.0,0.0,conservado (extremo plausible),APACHE II = 0: valor posible; confirmado por el equipo clínico. Se conserva.,False
+D9,apacheii,973.0,0.0,0.0,conservado (extremo plausible),APACHE II = 0: valor posible; confirmado por el equipo clínico. Se conserva.,False
+E1,death_30d,3.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,6.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,23.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,40.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,47.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,49.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,52.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,53.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,56.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,57.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,75.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,86.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,90.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,94.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,110.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,116.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,131.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,150.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,153.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,154.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,158.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,161.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,178.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,183.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,207.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,208.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,216.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,217.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,223.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,230.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,235.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,244.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,249.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,265.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,267.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,270.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,273.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,277.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,283.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,286.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,307.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,308.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,313.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,317.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,319.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,321.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,327.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,329.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,342.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,353.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,360.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,364.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,372.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,376.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,395.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,402.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,414.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,427.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,429.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,433.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,441.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,462.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,481.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,483.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,490.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,492.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,495.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,508.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,510.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,514.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,518.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,522.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,524.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,533.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,542.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,544.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,547.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,553.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,555.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,560.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,575.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,582.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,585.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,588.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,596.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,600.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,610.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,614.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,617.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,619.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,620.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,622.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,624.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,633.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,643.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,647.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,652.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,656.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,658.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,659.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,661.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,666.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,705.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,706.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,711.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,719.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,725.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,731.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,739.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,741.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,755.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,764.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,769.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,796.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,818.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,831.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,836.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,842.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,843.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,873.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,876.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,877.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,878.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,896.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,908.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,910.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,911.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,912.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,913.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,927.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,937.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,938.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,942.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,963.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,982.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1,death_30d,989.0,,,no aplica (faltante estructural),No aplica: murió en la UCI y el seguimiento de 30 días empieza en el egreso vivo. No se imputa.,False
+E1b,death_30d,14.0,1.0,,a faltante + query,Muerte en UCI con dato de muerte a 30 días post-egreso: contradictorio.,True
+E1c,muerte_uci_o_30d_post_egreso,,-,1 si murió en UCI o en los 30 días tras el egreso; 0 si sobrevivió,variable derivada,Desenlace definido para toda la cohorte; la muerte a 30 d solo existe para los egresos vivos.,False
+E2,mort_esperada_saps3_general,,"mortalidad esperada registrada (12,4 % faltante; mezcla de ecuaciones)",recalculada con la ecuación general de SAPS III para todos,variable derivada,La registrada coincide con la ecuación general en ~80 % y con la de Centro/Suramérica en otros casos; 96 tienen SAPS III sin probabilidad. Una sola ecuación hace comparable el O/E.,False
+F1,id_paciente_aprox,,-,"identificador aproximado (sexo, peso, talla, sitio, edad ±2)",variable derivada,Cada record_id es un ingreso. Hay pacientes con varios ingresos; sirve para validación agrupada y auditar la partición temporal.,False
