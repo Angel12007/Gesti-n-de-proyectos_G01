@@ -1,0 +1,22 @@
+{
+  "estancia_prolongada": {
+    "desenlace": "estancia_prolongada",
+    "variables": "14 variables (formulario)",
+    "imputacion": "KNN",
+    "modelo": "Extra Trees",
+    "auroc_cv": 0.8877061892006204,
+    "brier_cv": 0.0886784076239788,
+    "hiper": "None",
+    "simple": 3
+  },
+  "mortality": {
+    "desenlace": "mortality",
+    "variables": "14 variables (formulario)",
+    "imputacion": "KNN",
+    "modelo": "Regresión logística (L2)",
+    "auroc_cv": 0.9425722881707977,
+    "brier_cv": 0.06579668749687624,
+    "hiper": "0.1",
+    "simple": 3
+  }
+}

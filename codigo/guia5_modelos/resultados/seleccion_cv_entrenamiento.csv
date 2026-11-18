@@ -1,0 +1,49 @@
+desenlace,variables,imputacion,modelo,auroc_cv,brier_cv,hiper
+estancia_prolongada,37 variables,KNN,Regresión logística (L2),0.8728558672869966,0.096337069219055,0.1
+estancia_prolongada,37 variables,KNN,Random Forest,0.8828657361718125,0.09246435466316273,8
+estancia_prolongada,37 variables,KNN,Extra Trees,0.8925583909018281,0.08914293405525989,None
+estancia_prolongada,37 variables,KNN,HistGradientBoosting,0.8623525541613798,0.09361920570976999,3
+estancia_prolongada,37 variables,KNN,XGBoost,0.8722096903049955,0.09505915641784668,2
+estancia_prolongada,37 variables,KNN,CatBoost,0.8770031486442031,0.0963758585286414,4
+estancia_prolongada,37 variables,KNN + indicador,Regresión logística (L2),0.8751116123878001,0.09891111923697088,0.01
+estancia_prolongada,37 variables,KNN + indicador,Random Forest,0.877473095540204,0.09502716039177518,8
+estancia_prolongada,37 variables,KNN + indicador,Extra Trees,0.8776140796090043,0.09594281185409939,6
+estancia_prolongada,37 variables,KNN + indicador,HistGradientBoosting,0.8598148409229756,0.09535593854849637,3
+estancia_prolongada,37 variables,KNN + indicador,XGBoost,0.8694957469805912,0.09559168666601181,2
+estancia_prolongada,37 variables,KNN + indicador,CatBoost,0.8778608017294046,0.09681109777861573,6
+estancia_prolongada,14 variables (formulario),KNN,Regresión logística (L2),0.8722449363221956,0.09154804708978397,0.1
+estancia_prolongada,14 variables (formulario),KNN,Random Forest,0.881855350345411,0.09272645948764195,4
+estancia_prolongada,14 variables (formulario),KNN,Extra Trees,0.8877061892006204,0.0886784076239788,None
+estancia_prolongada,14 variables (formulario),KNN,HistGradientBoosting,0.8665057098547864,0.09253396856951872,3
+estancia_prolongada,14 variables (formulario),KNN,XGBoost,0.8734785469241976,0.0934162363409996,2
+estancia_prolongada,14 variables (formulario),KNN,CatBoost,0.8757812867146011,0.09408919128282364,4
+estancia_prolongada,14 variables (formulario),KNN + indicador,Regresión logística (L2),0.8746064194745993,0.09113566662362363,0.1
+estancia_prolongada,14 variables (formulario),KNN + indicador,Random Forest,0.8777315663330044,0.0944937979954808,4
+estancia_prolongada,14 variables (formulario),KNN + indicador,Extra Trees,0.8830419662578128,0.09113922647243888,6
+estancia_prolongada,14 variables (formulario),KNN + indicador,HistGradientBoosting,0.8654307063301847,0.09378474997993617,3
+estancia_prolongada,14 variables (formulario),KNN + indicador,XGBoost,0.8752878424738005,0.09329340606927872,2
+estancia_prolongada,14 variables (formulario),KNN + indicador,CatBoost,0.8772146247474035,0.09494889933100845,6
+mortality,37 variables,KNN,Regresión logística (L2),0.9411624013393926,0.0693372240093019,0.1
+mortality,37 variables,KNN,Random Forest,0.9420309923337403,0.06854591297427336,8
+mortality,37 variables,KNN,Extra Trees,0.9402686337944839,0.06678798391463392,None
+mortality,37 variables,KNN,HistGradientBoosting,0.9356739133171365,0.07148508023836,3
+mortality,37 variables,KNN,XGBoost,0.9383552159518624,0.06800496578216553,2
+mortality,37 variables,KNN,CatBoost,0.9354599126373695,0.07196783586079966,6
+mortality,37 variables,KNN + indicador,Regresión logística (L2),0.9416407558000479,0.06851178126900236,0.1
+mortality,37 variables,KNN + indicador,Random Forest,0.9409735772101864,0.07019373132285163,8
+mortality,37 variables,KNN + indicador,Extra Trees,0.9415904026989261,0.06985212013615144,6
+mortality,37 variables,KNN + indicador,HistGradientBoosting,0.9365928574126059,0.0698132712263098,3
+mortality,37 variables,KNN + indicador,XGBoost,0.9375369780586362,0.06802651286125183,2
+mortality,37 variables,KNN + indicador,CatBoost,0.9370082704968592,0.07209228316286444,6
+mortality,14 variables (formulario),KNN,Regresión logística (L2),0.9425722881707977,0.06579668749687624,0.1
+mortality,14 variables (formulario),KNN,Random Forest,0.9401049862158385,0.06833107063565232,4
+mortality,14 variables (formulario),KNN,Extra Trees,0.9373103891035889,0.06703599575079819,6
+mortality,14 variables (formulario),KNN,HistGradientBoosting,0.9309784866375458,0.07006237564849875,3
+mortality,14 variables (formulario),KNN,XGBoost,0.9349941464519946,0.06953316926956177,2
+mortality,14 variables (formulario),KNN,CatBoost,0.9309784866375458,0.07602528797596055,6
+mortality,14 variables (formulario),KNN + indicador,Regresión logística (L2),0.943453467440426,0.06534930762362859,0.1
+mortality,14 variables (formulario),KNN + indicador,Random Forest,0.9407973413562607,0.06989127773465934,4
+mortality,14 variables (formulario),KNN + indicador,Extra Trees,0.9386699228338725,0.0676159852357715,6
+mortality,14 variables (formulario),KNN + indicador,HistGradientBoosting,0.935132617480079,0.06896202406777303,3
+mortality,14 variables (formulario),KNN + indicador,XGBoost,0.9365173277609234,0.06833948194980621,2
+mortality,14 variables (formulario),KNN + indicador,CatBoost,0.9377383904631226,0.07111415409679843,4
